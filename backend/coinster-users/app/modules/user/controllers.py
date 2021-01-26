@@ -4,8 +4,12 @@ from app.helpers.responses import BadRequest, SuccessResponse, NotFoundError
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.modules.user.models import User
 from app import db
+from flask_cors import CORS
+
 
 mod_user = Blueprint('user', __name__, url_prefix='/api/v1/user')
+CORS(mod_user)
+
 @mod_user.route('/sign-up', methods=['POST'])
 def sign_up():
     

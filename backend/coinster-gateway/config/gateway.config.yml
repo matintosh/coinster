@@ -26,19 +26,17 @@ serviceEndpoints:
   transferencesService:
     url: 'http://coinster-transferences:5000'
 policies:
-  - basic-auth
   - cors
-  - expression
-  - key-auth
-  - log
-  - oauth2
   - proxy
-  - rate-limit
 pipelines:
   userPipeline:
     apiEndpoints:
       - users
     policies:
+      - cors:
+            - action:
+                origin: 'http://localhost:3000'
+                methods: 'HEAD,PUT,PATCH,POST,GET,DELETE'
       - proxy:
           - action:
               serviceEndpoint: userService
