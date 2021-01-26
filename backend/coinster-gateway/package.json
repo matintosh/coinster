@@ -1,0 +1,19 @@
+{
+    "name": "coinster-gateway",
+    "description": "",
+    "version": "2.2.1",
+    "repository": {},
+    "license": "UNLICENSED",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": ""
+    },
+    "dependencies": {
+        "express-gateway": "1.16.10"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.4"
+    }
+}

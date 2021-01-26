@@ -1,0 +1,69 @@
+http:
+  port: 5000
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  users:
+    host: localhost
+    paths: ['/user','/user/*']
+  currency:
+    host: localhost
+    paths: ['/currency','/currency/*']
+  wallets:
+    host: localhost
+    paths: ['/wallet','/wallet/*']
+  transferences:
+    host: localhost
+    paths: ['/transference','/transference/*']
+serviceEndpoints:
+  userService:
+    url: 'http://coinster-users:5000'
+  currencyService:
+    url: 'http://coinster-currency:5000'
+  walletsService:
+    url: 'http://coinster-wallets:5000'
+  transferencesService:
+    url: 'http://coinster-transferences:5000'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  userPipeline:
+    apiEndpoints:
+      - users
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: userService
+              changeOrigin: true
+  currencyPipeline:
+    apiEndpoints:
+      - currency
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: currencyService
+              changeOrigin: true
+  walletsPipeline:
+    apiEndpoints:
+      - wallets
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: walletsService
+              changeOrigin: true
+  transferencesPipeline:
+    apiEndpoints:
+      - transferences
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: transferencesService
+              changeOrigin: true
