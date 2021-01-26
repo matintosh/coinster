@@ -7,7 +7,7 @@ from app import db
 
 from app.modules.currency.models import Currency
 
-mod_currency = Blueprint('currency', __name__, url_prefix='/currency')
+mod_currency = Blueprint('currency', __name__, url_prefix='/api/v1/currency')
 
 @mod_currency.route('', methods=['POST'])
 def create():

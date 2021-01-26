@@ -10,7 +10,7 @@ import requests
 from common.cross_service_helpers import validate_if_wallet_exists
 from app.modules.daemon.producer import publish
 
-mod_transference = Blueprint('transference', __name__, url_prefix='/transference')
+mod_transference = Blueprint('transference', __name__, url_prefix='/api/v1/transference')
 
 @mod_transference.route('/create', methods=['POST'])
 def create():

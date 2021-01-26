@@ -7,7 +7,7 @@ from app import db
 import requests
 from common.cross_service_helpers import validate_if_user_exists
 
-mod_wallet = Blueprint('wallet', __name__, url_prefix='/wallet')
+mod_wallet = Blueprint('wallet', __name__, url_prefix='/api/v1/wallet')
 
 
 @mod_wallet.route('/create', methods=['POST'])

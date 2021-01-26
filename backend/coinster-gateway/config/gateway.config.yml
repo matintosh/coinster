@@ -6,16 +6,16 @@ admin:
 apiEndpoints:
   users:
     host: localhost
-    paths: ['/user','/user/*']
+    paths: ['api/v1/user','api/v1/user/*']
   currency:
     host: localhost
-    paths: ['/currency','/currency/*']
+    paths: ['api/v1/currency','api/v1/currency/*']
   wallets:
     host: localhost
-    paths: ['/wallet','/wallet/*']
+    paths: ['api/v1/wallet','api/v1/wallet/*']
   transferences:
     host: localhost
-    paths: ['/transference','/transference/*']
+    paths: ['api/v1/transference','api/v1/transference/*']
 serviceEndpoints:
   userService:
     url: 'http://coinster-users:5000'
