@@ -1,0 +1,147 @@
+networks:
+  coinster-network:
+    driver: bridge
+
+services:
+
+  coinster-gateway: 
+    build:
+      context: ./
+      dockerfile: ./backend/coinster-gateway/Dockerfile
+    restart: always
+    ports:
+      - "3000:5000"
+    networks:
+      - coinster-network
+
+    depends_on:
+      - coinster-currency
+      - coinster-users
+      - coinster-wallets
+      - coinster-wallets-queue
+      - coinster-transferences
+      - coinster-transferences-queue
+
+
+  coinster-currency:
+
+    build:
+      context: ./
+      dockerfile: ./backend/coinster-currency/Dockerfile
+
+    ports:
+
+      - "5000:5000"
+
+    volumes:
+      - "./local-db:/go/src/coinster/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+
+  coinster-users:
+
+    build:
+      context: ./
+      dockerfile: ./backend/coinster-users/Dockerfile
+
+    restart: always
+
+    ports:
+
+      - "5001:5000"
+
+    volumes:
+      - "./local-db:/go/src/coinster/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+
+  coinster-wallets:
+
+    build:
+          context: ./
+          dockerfile: ./backend/coinster-wallets/Dockerfile
+
+    ports:
+
+      - "5002:5000"
+
+    volumes:
+      - "./local-db:/go/src/coinster/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+    environment:
+    - PYTHONUNBUFFERED=1
+  
+  coinster-transferences:
+
+    build:
+          context: ./
+          dockerfile: ./backend/coinster-transferences/Dockerfile
+
+
+    command: 'python run.py'
+    
+    ports:
+
+      - "5003:5000"
+
+    volumes:
+      - "./local-db:/go/src/beginnerapp/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+
+    environment:
+    - PYTHONUNBUFFERED=1
+
+  coinster-transferences-queue:
+
+    build:
+          context: ./
+          dockerfile: ./backend/coinster-transferences/Dockerfile
+    volumes:
+      - db
+
+    command: 'python run.py'
+    
+    ports:
+
+      - "5004:5000"
+
+    volumes:
+      - "./local-db:/go/src/coinster/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RUN_QUEUE=True
+
+  coinster-wallets-queue:
+
+    build:
+          context: ./
+          dockerfile: ./backend/coinster-wallets/Dockerfile
+
+    ports:
+
+      - "5005:5000"
+
+    volumes:
+      - "./local-db:/go/src/coinster/local-db"
+      - "./app/:/code"
+
+    networks:
+      - coinster-network
+    environment:
+    - PYTHONUNBUFFERED=1
+    - RUN_QUEUE=True
