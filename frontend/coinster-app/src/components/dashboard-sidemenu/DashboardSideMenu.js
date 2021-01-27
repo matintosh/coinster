@@ -50,7 +50,7 @@ const DashboardSideMenu = ({ history }) => {
 
         <Button
           className={`navigation-button ${
-            path === "/dashboard/wallets" ? "selected" : ""
+            path.includes("/dashboard/wallets") ? "selected" : ""
           }`}
           onClick={() => handleNavigate("/dashboard/wallets")}
         >

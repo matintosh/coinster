@@ -41,11 +41,11 @@ const SignInCard = ({ setError, history }) => {
 
     const response = await signInService(email, password);
 
-    if (response.error) {
-      setError(response.error);
+    if (response?.error) {
+      setError(response?.error);
     }
 
-    if (response.data) {
+    if (response?.data) {
       const { token, user } = response.data;
       setToken(token);
       setCurrentUser(user);

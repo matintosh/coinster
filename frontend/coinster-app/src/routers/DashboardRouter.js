@@ -6,7 +6,7 @@ import PrivateRoute from "./PrivateRoutes";
 export default function DashboardRouter() {
   return (
     <Switch>
-      <PrivateRoute exact path="/dashboard/wallets">
+      <PrivateRoute path="/dashboard/wallets">
         <DashboardWallets />
       </PrivateRoute>
       <PrivateRoute path="/dashboard">

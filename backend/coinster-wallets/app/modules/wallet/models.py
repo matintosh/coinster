@@ -28,12 +28,12 @@ class Wallet(Base):
     currency = db.Column(db.Integer(), nullable=False)
     balance = db.Column(db.Integer(), nullable=False)
 
-    def __init__(self, user_id, currency):
+    def __init__(self, user_id, currency, initial_balance):
         
         self.public_id = str(uuid.uuid4()),
         self.user_id = user_id
         self.currency = currency
-        self.balance = 2000
+        self.balance = initial_balance
 
     def __repr__(self):
         return '<Wallet %r>' % (self.currency)

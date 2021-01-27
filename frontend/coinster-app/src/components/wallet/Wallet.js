@@ -1,7 +1,7 @@
 import React from "react";
-import FindInPageOutlinedIcon from "@material-ui/icons/FindInPageOutlined";
+import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 
-const Wallet = ({ currency, balance, id }) => {
+const Wallet = ({ currency, balance, id, onDelete }) => {
   return (
     <div className="wallet">
       <div className="wallet-currency-info">
@@ -9,7 +9,10 @@ const Wallet = ({ currency, balance, id }) => {
         <p className="balance"> ${balance} </p>
       </div>
       <p>{id}</p>
-      <FindInPageOutlinedIcon className="wallet-icon" />
+      <DeleteForeverOutlinedIcon
+        className="wallet-icon"
+        onClick={() => onDelete(id)}
+      />
     </div>
   );
 };
