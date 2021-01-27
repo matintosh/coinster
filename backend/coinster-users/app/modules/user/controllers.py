@@ -63,7 +63,7 @@ def sign_in():
     if check_password_hash(user.password, password):
         token = get_token(user.public_id)
 
-        return SuccessResponse({'token': token.decode('UTF-8')})
+        return SuccessResponse({'user': user, 'token': token.decode('UTF-8')})
 
     return PermissionDenied("User or passowrd incorrect.")
 
