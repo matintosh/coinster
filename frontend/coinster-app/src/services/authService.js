@@ -1,13 +1,20 @@
 import { unAuthAxiosCall } from "./axios";
 import { deleteCurrentUser, deleteToken } from "../utils/auth";
 
-export const signUpService = async (firstName, lastName, email, password) => {
+export const signUpService = async (first_name, last_name, email, password) => {
     return unAuthAxiosCall("/api/v1/user/sign-up", {
         method: "POST",
         body: JSON.stringify({
-            name: "Mati",
-            email: "matias@mati.com",
-            password: "123456789"
+            first_name, last_name, email, password
+        })
+    })
+};
+
+export const signInService = async (email, password) => {
+    return unAuthAxiosCall("/api/v1/user/sign-in", {
+        method: "POST",
+        body: JSON.stringify({
+            email, password
         })
     })
 };

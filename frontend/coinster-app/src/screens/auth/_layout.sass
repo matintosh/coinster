@@ -1,0 +1,27 @@
+.sign-up-page
+    width: 100%
+    height: 100%
+
+    display: flex
+    flex-direction: row
+
+    justify-content: space-between
+    align-items: center
+
+    .sign-up-title
+    
+        position: relative
+        animation: slide-left-right 1s ease-out 800ms, fade-in-delay 2s ease-out 
+        z-index: 1
+
+        &.error
+            animation: slide-bottom-up 400ms ease-out
+            h1, h2
+                color: $error
+
+    svg
+        display: inline-block
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 0

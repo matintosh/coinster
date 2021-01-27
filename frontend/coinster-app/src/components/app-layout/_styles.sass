@@ -1,0 +1,37 @@
+.app-layout
+  
+  $dot-size: 2px
+  $dot-space: 22px
+  $bg-color: $base-color
+  $dot-color: hsl(256,33,70)
+
+
+  width: 100vw
+  height: 100vh
+
+  background-color: $base-color
+
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  background: linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center, linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%)
+  background-size: $dot-space $dot-space
+
+  .app-layout-container
+    @extend .soft-shadow
+
+    animation: slide-bottom-up 800ms ease-out
+
+    position: relative
+    width: 80%
+    height: 80%
+
+    box-sizing: border-box
+
+    overflow: hidden
+
+    background: $white
+    border-radius: 48px
+    padding: 64px

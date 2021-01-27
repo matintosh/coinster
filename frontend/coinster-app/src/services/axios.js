@@ -19,7 +19,9 @@ const axiosCall = async (url, { query, ...requestOptions }) => {
       data: requestOptions.body,
     });
   } catch (error) {
-    if (error.response.status === 401) {
+
+
+    if (error?.response?.status === 401) {
       await logout();
     }
 

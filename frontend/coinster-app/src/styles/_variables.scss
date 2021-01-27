@@ -1,0 +1,66 @@
+$primary: #3091c0;
+$base-color: #edf3fe;
+
+$primary-30: #3090c030;
+
+$error: rgb(243, 94, 94);
+
+$white: #ffffff;
+
+.soft-shadow {
+  -webkit-box-shadow: 0px 0px 48px -18px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 48px -18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 48px -18px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slide-bottom-up {
+  0% {
+    bottom: -60%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+@keyframes slide-left-right {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes slide-right-left {
+  0% {
+    right: -60%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+
+@keyframes fade-in-delay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.coinster-card {
+  border: 1px $base-color solid;
+  border-radius: 21px;
+}
+
+:export {
+  primary: $primary;
+  base-color: $base-color;
+
+  primary-30: $primary-30;
+
+  white: $white;
+}

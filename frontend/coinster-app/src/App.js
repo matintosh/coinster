@@ -1,19 +1,18 @@
-import React from 'react'
-import { SignUp } from './screens';
-import { signUpService } from './services/authService';
+import React from "react";
+import AppRouter from "./routers";
+import { ThemeProvider } from "@material-ui/styles";
+import theme from "./theme";
+import { CoinsterContextProvider } from "./context";
+
+import "./styles/app.sass";
 
 function App() {
-  const login = async () => {
-    const response = await signUpService()
-    console.log(response)
-  }
-
   return (
-    <div className="App">
-      <SignUp />
-
-      <button onClick={login}>Register</button>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CoinsterContextProvider>
+        <AppRouter />
+      </CoinsterContextProvider>
+    </ThemeProvider>
   );
 }
 
