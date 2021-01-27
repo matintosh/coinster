@@ -4,6 +4,7 @@ import DashboardSideMenu from "./dashboard-sidemenu";
 import SignUpCard from "./sign-up-card";
 import SignInCard from "./sign-in-card";
 import Loading from "./loading";
+import PendingTransferencesCard from "./pending-transferences-card";
 
 export {
   AppLayout,
@@ -12,4 +13,5 @@ export {
   Loading,
   AppHeader,
   DashboardSideMenu,
+  PendingTransferencesCard,
 };

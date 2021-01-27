@@ -10,6 +10,8 @@ $primary-20: #3090c020;
 $font-color: #2e3347;
 $error: rgb(243, 94, 94);
 
+$money: #60c560;
+
 $white: #ffffff;
 
 .soft-shadow {
@@ -68,6 +70,8 @@ $white: #ffffff;
   font-color: $font-color;
   primary-30: $primary-30;
   primary-20: $primary-20;
+
+  money: $money;
 
   white: $white;
 }
