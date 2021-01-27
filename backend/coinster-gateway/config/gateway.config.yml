@@ -5,16 +5,16 @@ admin:
   host: localhost
 apiEndpoints:
   users:
-    host: 192.168.1.9
+    host: '*'
     paths: ['/api/v1/user','/api/v1/user/*']
   currency:
-    host: 192.168.1.9
+    host: '*'
     paths: ['/api/v1/currency','/api/v1/currency/*']
   wallets:
-    host: 192.168.1.9
+    host: '*'
     paths: ['/api/v1/wallet','/api/v1/wallet/*']
   transferences:
-    host: 192.168.1.9
+    host: '*'
     paths: ['/api/v1/transference','/api/v1/transference/*']
 serviceEndpoints:
   userService:

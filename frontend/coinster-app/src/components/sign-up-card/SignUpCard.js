@@ -46,11 +46,13 @@ const SignUpCard = ({ setError, history }) => {
 
     const response = await signUpService(firstName, lastName, email, password);
 
-    if (response.error) {
-      setError(response.error);
+
+    console.log(response)
+    if (response?.error) {
+      setError(response?.error);
     }
 
-    if (response.data) {
+    if (response?.data) {
       const { token, user } = response.data;
       setToken(token);
       setCurrentUser(user);
