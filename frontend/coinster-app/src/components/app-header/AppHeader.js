@@ -2,6 +2,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import MainLogo from "../../assets/logo.png";
 import { logout } from "../../services/authService";
+import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 
 const AppHeader = () => {
   return (
@@ -11,7 +12,10 @@ const AppHeader = () => {
         <p className="app-name"> Coinster </p>
       </div>
       <div className="header-actions">
-            <Button variant="outlined" onClick={logout}>Log out</Button>
+        <NotificationsNoneOutlinedIcon className="notifications-icon" />
+        <Button variant="outlined" onClick={logout}>
+          Log out
+        </Button>
       </div>
     </div>
   );
