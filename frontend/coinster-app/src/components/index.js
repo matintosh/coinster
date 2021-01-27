@@ -1,9 +1,7 @@
-import AppLayout from './app-layout'
-import SignUpCard from './sign-up-card'
-import SignInCard from './sign-in-card'
-import Loading from './loading'
+import AppLayout from "./app-layout";
+import AppHeader from "./app-header";
+import SignUpCard from "./sign-up-card";
+import SignInCard from "./sign-in-card";
+import Loading from "./loading";
 
-
-
-
-export { AppLayout, SignUpCard, SignInCard, Loading };
+export { AppLayout, SignUpCard, SignInCard, Loading, AppHeader };

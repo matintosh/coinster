@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AppLayout } from "../components";
-import { Auth } from "../screens";
+import { Auth, Dashboard } from "../screens";
 import PrivateRoute from "./PrivateRoutes";
 
 export default function AppRouter() {
@@ -10,16 +10,16 @@ export default function AppRouter() {
       <AppLayout>
         <Switch>
           <PrivateRoute path="/dashboard">
-              <div>Dashboard</div>
+            <Dashboard />
           </PrivateRoute>
-        <Route path="/sign-up">
-            <Auth signUp={true}/>
+          <Route path="/sign-up">
+            <Auth signUp={true} />
           </Route>
           <Route path="/sign-in">
-            <Auth signIn={true}/>
+            <Auth signIn={true} />
           </Route>
           <Route path="/">
-            <Auth signUp={true}/>
+            <Auth signUp={true} />
           </Route>
         </Switch>
       </AppLayout>
