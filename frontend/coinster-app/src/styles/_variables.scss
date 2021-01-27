@@ -1,8 +1,13 @@
 $primary: #3091c0;
 $base-color: #edf3fe;
 
-$primary-30: #3090c030;
+$light: #a5aab3;
 
+$primary-30: #3090c030;
+$primary-20: #3090c020;
+
+
+$font-color: #2e3347;
 $error: rgb(243, 94, 94);
 
 $white: #ffffff;
@@ -59,8 +64,10 @@ $white: #ffffff;
 :export {
   primary: $primary;
   base-color: $base-color;
-
+  light: $light;
+  font-color: $font-color;
   primary-30: $primary-30;
+  primary-20: $primary-20;
 
   white: $white;
 }

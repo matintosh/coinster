@@ -1,10 +1,11 @@
 import React from "react";
-import { AppHeader } from "../../components";
+import { AppHeader, DashboardSideMenu } from "../../components";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
       <AppHeader />
+      <DashboardSideMenu />
     </div>
   );
 };
