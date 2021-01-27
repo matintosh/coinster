@@ -38,12 +38,21 @@ def create(current_user):
 
 @mod_wallet.route('/list', methods=['GET'])
 @token_required
+def list_user_wallets_protected(user_id):
+
+    wallets = Wallet.query.filter_by(user_id=user_id).all()
+    currency_data = get_currencies()
+
+    return SuccessResponse({'wallets': wallets, 'currency_data': currency_data})
+
+@mod_wallet.route('/user/<user_id>', methods=['GET'])
 def list_user_wallets(user_id):
 
     wallets = Wallet.query.filter_by(user_id=user_id).all()
     currency_data = get_currencies()
 
     return SuccessResponse({'wallets': wallets, 'currency_data': currency_data})
+
 
 
 @mod_wallet.route('/<wallet_id>', methods=['GET'])

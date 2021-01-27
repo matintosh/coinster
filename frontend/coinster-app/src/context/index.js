@@ -6,6 +6,7 @@ export const CoinsterContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [wallets, setWallets] = useState([]);
   const [currencyList, setCurrencyList] = useState([]);
+  const [transferences, setTransferences] = useState([]);
 
   const context = {
     loading,
@@ -14,6 +15,8 @@ export const CoinsterContextProvider = ({ children }) => {
     setWallets,
     currencyList,
     setCurrencyList,
+    transferences,
+    setTransferences,
   };
 
   return (

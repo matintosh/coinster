@@ -6,6 +6,7 @@ import SignInCard from "./sign-in-card";
 import Loading from "./loading";
 import PendingTransferencesCard from "./pending-transferences-card";
 import Wallet from "./wallet";
+import Transference from './transference'
 
 export {
   AppLayout,
@@ -16,4 +17,5 @@ export {
   DashboardSideMenu,
   PendingTransferencesCard,
   Wallet,
+  Transference
 };

@@ -11,16 +11,17 @@ services:
     restart: always
     ports:
       - "4000:5000"
+      
     networks:
       - coinster-network
 
-    depends_on:
-      - coinster-currency
-      - coinster-users
-      - coinster-wallets
-      - coinster-wallets-queue
-      - coinster-transferences
-      - coinster-transferences-queue
+    # depends_on:
+    #   - coinster-users
+      # - coinster-currency
+      # - coinster-wallets
+      # - coinster-wallets-queue
+      # - coinster-transferences
+      # - coinster-transferences-queue
 
 
   coinster-currency:

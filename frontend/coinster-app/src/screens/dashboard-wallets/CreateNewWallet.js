@@ -1,12 +1,9 @@
 import React, { useContext, useState } from "react";
 import { CoinsterContext } from "../../context";
-import { getCurrentUser } from "../../utils/auth";
 import { newWalletService } from "../../services/walletService";
 import {
   Button,
-  Fab,
   FormControl,
-  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -15,7 +12,6 @@ import {
 
 const CreateNewWallet = ({ updateData, goToList }) => {
   const { currencyList, setLoading } = useContext(CoinsterContext);
-  const user = getCurrentUser();
   const [selectedCurrency, setSelectedCurrency] = useState(null);
   const [selectedBalance, setSelectedBalance] = useState("");
 

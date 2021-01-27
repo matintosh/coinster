@@ -10,9 +10,12 @@ def validate_transference(transference):
     
     wallet_object = db.session.query(Wallet)
     
-    wallet_from  = wallet_object.filter_by(id=wallet_from_id).first()
-    wallet_to    = wallet_object.filter_by(id=wallet_to_id).first()
+    wallet_from  = wallet_object.filter_by(public_id=wallet_from_id).first()
+    wallet_to    = wallet_object.filter_by(public_id=wallet_to_id).first()
     
+    print("Transference ongoing")
+    print("FROM:", wallet_from_id)
+    print("TO:", wallet_to_id)
     if wallet_from and wallet_to:
         if wallet_from.balance > transference_amount:
             wallet_from.balance = wallet_from.balance - transference_amount

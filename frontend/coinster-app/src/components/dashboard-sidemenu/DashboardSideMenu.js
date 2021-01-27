@@ -43,6 +43,7 @@ const DashboardSideMenu = ({ history }) => {
           className={`navigation-button ${
             path === "/dashboard/transferences" ? "selected" : ""
           }`}
+          onClick={() => handleNavigate("/dashboard/transferences")}
         >
           <MonetizationOnOutlinedIcon className="button-icon" />
           Transferences

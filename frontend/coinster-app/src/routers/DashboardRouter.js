@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { DashboardHome, DashboardWallets } from "../screens";
+import {
+  DashboardHome,
+  DashboardTransferences,
+  DashboardWallets,
+} from "../screens";
 import PrivateRoute from "./PrivateRoutes";
 
 export default function DashboardRouter() {
@@ -8,6 +12,9 @@ export default function DashboardRouter() {
     <Switch>
       <PrivateRoute path="/dashboard/wallets">
         <DashboardWallets />
+      </PrivateRoute>
+      <PrivateRoute path="/dashboard/transferences">
+        <DashboardTransferences />
       </PrivateRoute>
       <PrivateRoute path="/dashboard">
         <DashboardHome />

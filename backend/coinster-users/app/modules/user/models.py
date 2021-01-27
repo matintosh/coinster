@@ -30,7 +30,7 @@ class User(Base):
 
     def __init__( self, first_name, last_name, email, password ):
         
-        self.public_id      = str(uuid.uuid4()), 
+        self.public_id      = str(uuid.uuid4())
         self.first_name     = first_name
         self.last_name      = last_name
         self.email          = email
