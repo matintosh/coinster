@@ -6,16 +6,16 @@ admin:
 apiEndpoints:
   users:
     host: localhost
-    paths: ['api/v1/user','api/v1/user/*']
+    paths: ['/api/v1/user','/api/v1/user/*']
   currency:
     host: localhost
-    paths: ['api/v1/currency','api/v1/currency/*']
+    paths: ['/api/v1/currency','/api/v1/currency/*']
   wallets:
     host: localhost
-    paths: ['api/v1/wallet','api/v1/wallet/*']
+    paths: ['/api/v1/wallet','/api/v1/wallet/*']
   transferences:
     host: localhost
-    paths: ['api/v1/transference','api/v1/transference/*']
+    paths: ['/api/v1/transference','/api/v1/transference/*']
 serviceEndpoints:
   userService:
     url: 'http://coinster-users:5000'
@@ -26,20 +26,15 @@ serviceEndpoints:
   transferencesService:
     url: 'http://coinster-transferences:5000'
 policies:
-  - cors
   - proxy
 pipelines:
   userPipeline:
     apiEndpoints:
       - users
     policies:
-      - cors:
-            - action:
-                origin: 'http://localhost:3000'
-                methods: 'HEAD,PUT,PATCH,POST,GET,DELETE'
       - proxy:
           - action:
-              serviceEndpoint: userService
+              serviceEndpoint: userService 
               changeOrigin: true
   currencyPipeline:
     apiEndpoints:
