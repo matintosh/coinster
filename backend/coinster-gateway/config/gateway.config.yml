@@ -5,26 +5,26 @@ admin:
   host: localhost
 apiEndpoints:
   users:
-    host: 104.131.25.80
+    host: "*"
     paths: ['/api/v1/user','/api/v1/user/*']
   currency:
-    host: 104.131.25.80
+    host: "*"
     paths: ['/api/v1/currency','/api/v1/currency/*']
   wallets:
-    host: 104.131.25.80
+    host: "*"
     paths: ['/api/v1/wallet','/api/v1/wallet/*']
   transferences:
-    host: 104.131.25.80
+    host: "*"
     paths: ['/api/v1/transference','/api/v1/transference/*']
 serviceEndpoints:
   userService:
-    url: 'http://coinster-users:5000'
+    url: 'http://104.131.25.80:5001'
   currencyService:
-    url: 'http://coinster-currency:5000'
+    url: 'http://104.131.25.80:5000'
   walletsService:
-    url: 'http://coinster-wallets:5000'
+    url: 'http://104.131.25.80:5002'
   transferencesService:
-    url: 'http://coinster-transferences:5000'
+    url: 'http://104.131.25.80:5003'
 policies:
   - proxy
 pipelines:
