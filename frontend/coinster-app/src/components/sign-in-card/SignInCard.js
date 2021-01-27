@@ -10,18 +10,16 @@ import MainLogo from "../../assets/logo.png";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { signInService } from "../../services/authService";
-import { Link, useHistory } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { setCurrentUser, setToken } from "../../utils/auth";
 import { validateEmail } from "../../utils/validations";
 import { CoinsterContext } from "../../context";
 
-const SignInCard = ({ setError }) => {
+const SignInCard = ({ setError, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [seePassword, setSeePassword] = useState(false);
-
-  let history = useHistory();
 
   const context = useContext(CoinsterContext);
 
@@ -102,4 +100,4 @@ const SignInCard = ({ setError }) => {
   );
 };
 
-export default SignInCard;
+export default withRouter(SignInCard);

@@ -5,6 +5,7 @@ import SignUpCard from "./sign-up-card";
 import SignInCard from "./sign-in-card";
 import Loading from "./loading";
 import PendingTransferencesCard from "./pending-transferences-card";
+import Wallet from "./wallet";
 
 export {
   AppLayout,
@@ -14,4 +15,5 @@ export {
   AppHeader,
   DashboardSideMenu,
   PendingTransferencesCard,
+  Wallet,
 };

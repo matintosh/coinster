@@ -8,7 +8,7 @@ const Dashboard = () => {
       <AppHeader />
       <div className="sidemenu-content-container">
         <DashboardSideMenu />
-        <div>
+        <div className="dashboard-router-container">
           <DashboardRouter />
         </div>
       </div>

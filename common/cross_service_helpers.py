@@ -23,3 +23,10 @@ def get_user_wallets(user_id):
     wallets_data    = req.json()
 
     return wallets_data
+
+def get_currencies():
+    
+    req             = requests.get('http://coinster-currency:5000/api/v1/currency')  
+    currency_data    = req.json()
+
+    return currency_data

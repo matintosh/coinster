@@ -1,12 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import { AppLayout } from "../components";
 import { Auth, Dashboard } from "../screens";
 import PrivateRoute from "./PrivateRoutes";
 
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
+
 export default function AppRouter() {
   return (
-    <Router>
+    <Router history={history}>
       <AppLayout>
         <Switch>
           <PrivateRoute path="/dashboard">

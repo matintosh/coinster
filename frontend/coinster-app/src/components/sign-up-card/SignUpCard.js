@@ -10,20 +10,18 @@ import MainLogo from "../../assets/logo.png";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { signUpService } from "../../services/authService";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import { setCurrentUser, setToken } from "../../utils/auth";
 import { validateEmail } from "../../utils/validations";
 import { CoinsterContext } from "../../context";
 
-const SignUpCard = ({ setError }) => {
+const SignUpCard = ({ setError, history }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [seePassword, setSeePassword] = useState(false);
-
-  let history = useHistory();
 
   const context = useContext(CoinsterContext);
 
@@ -44,7 +42,7 @@ const SignUpCard = ({ setError }) => {
     const errors = validateInputs();
     if (errors) return setError(errors);
 
-    setLoading(true)
+    setLoading(true);
 
     const response = await signUpService(firstName, lastName, email, password);
 
@@ -60,7 +58,7 @@ const SignUpCard = ({ setError }) => {
       history.push("/dashboard");
     }
 
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -121,4 +119,4 @@ const SignUpCard = ({ setError }) => {
   );
 };
 
-export default SignUpCard;
+export default withRouter(SignUpCard);

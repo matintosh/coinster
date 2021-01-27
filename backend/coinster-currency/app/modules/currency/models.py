@@ -14,6 +14,7 @@ class Currency(Base):
 
     __tablename__ = 'currency'
         
+    id:   int
     name: str
     
     name = db.Column(db.String(192), nullable = False)

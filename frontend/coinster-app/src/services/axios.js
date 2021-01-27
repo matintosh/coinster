@@ -57,7 +57,7 @@ export const authAxiosCall = async (url, requestOptions) => {
     ...requestOptions,
     headers: {
       ...requestOptions.headers,
-      authorization: `Bearer ${getToken()}`,
+      'x-access-token': `${getToken()}`,
     },
   });
 };
