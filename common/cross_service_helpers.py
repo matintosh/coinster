@@ -15,3 +15,11 @@ def validate_if_wallet_exists(wallet_id):
     wallet_data     = req.json()
 
     return "error" not in wallet_data
+
+
+def get_user_wallets(user_id):
+    
+    req             = requests.get('http://coinster-wallets:5000/wallet/user/%r' % user_id)  
+    wallets_data    = req.json()
+
+    return wallets_data
