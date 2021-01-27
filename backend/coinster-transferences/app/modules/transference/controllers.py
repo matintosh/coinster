@@ -1,7 +1,7 @@
 import dataclasses
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for, make_response, jsonify
-                  
+from app.helpers.auth import token_required
 from app.helpers.responses import BadRequest, SuccessResponse, NotFoundError, MissingValue
 
 from app.modules.transference.models import Transference
@@ -43,4 +43,7 @@ def create():
     
     
     
+@mod_transference.route('/me', methods=['GET'])
+@token_required
+def get_user_transferences():
     
