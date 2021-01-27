@@ -5,20 +5,24 @@ import DataUsageOutlinedIcon from "@material-ui/icons/DataUsageOutlined";
 import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
+import { getCurrentUser } from "../../utils/auth";
 
 const DashboardSideMenu = () => {
+  const user = getCurrentUser();
+  const { first_name, last_name, email } = user;
+
   return (
     <div className="dashboard-side-menu">
       <div className="user-avatar-container">
         <Gravatar
-          email="matiasmartineeez@gmail.com"
+          email={email}
           size={100}
-          rating="pg"
-          default="monsterid"
           className="avatar-image"
         />
-        <p className="user-name">Matias</p>
-        <p className="user-email">matias@matias.com</p>
+        <p className="user-name">
+          {first_name} {last_name}
+        </p>
+        <p className="user-email">{email}</p>
       </div>
 
       <div className="dashboard-navigation">

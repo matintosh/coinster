@@ -11,7 +11,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { signUpService } from "../../services/authService";
 import { Link, useHistory } from "react-router-dom";
-import { setToken } from "../../utils/auth";
+import { setCurrentUser, setToken } from "../../utils/auth";
 import { validateEmail } from "../../utils/validations";
 import { CoinsterContext } from "../../context";
 
@@ -53,8 +53,9 @@ const SignUpCard = ({ setError }) => {
     }
 
     if (response.data) {
-      const { token } = response.data;
+      const { token, user } = response.data;
       setToken(token);
+      setCurrentUser(user);
 
       history.push("/dashboard");
     }
