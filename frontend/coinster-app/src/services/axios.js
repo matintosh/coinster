@@ -20,8 +20,7 @@ const axiosCall = async (url, { query, ...requestOptions }) => {
     });
   } catch (error) {
 
-
-    if (error?.response?.status === 401) {
+    if (!['/sign-in', '/sign-up'].includes(window.location.pathname) && error?.response?.status === 401) {
       await logout();
     }
 
@@ -29,11 +28,9 @@ const axiosCall = async (url, { query, ...requestOptions }) => {
       console.error(error.response.data.error);
       return error.response.data;
     } else if (error.request) {
-      console.log(error.request);
-      throw new Error("Error")
+      console.error(error.request);
     } else {
       console.error(error.message);
-      throw new Error("Error")
     }
   }
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   IconButton,
@@ -9,23 +9,57 @@ import MainLogo from "../../assets/logo.png";
 
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { signUpService } from "../../services/authService";
-import { Link } from "react-router-dom";
+import { signInService } from "../../services/authService";
+import { Link, useHistory } from "react-router-dom";
+import { setToken } from "../../utils/auth";
+import { validateEmail } from "../../utils/validations";
+import { CoinsterContext } from "../../context";
 
-const SignInCard = () => {
+const SignInCard = ({ setError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [seePassword, setSeePassword] = useState(false);
 
+  let history = useHistory();
+
+  const context = useContext(CoinsterContext);
+
+  const { setLoading } = context;
+
+  const validateInputs = () => {
+    const emailField = validateEmail(email);
+    const passwordField = password.length > 6;
+
+    if (!emailField) return `Email format is incorrect`;
+    if (!passwordField) return `Password should be longer than 6 characters`;
+  };
+
   const handleSignUp = async () => {
-    const response = await signUpService(email, password);
-    console.log(response);
+    const errors = validateInputs();
+    if (errors) return setError(errors);
+
+    setLoading(true)
+
+    const response = await signInService( email, password);
+
+    if (response.error) {
+      setError(response.error);
+    }
+
+    if (response.data) {
+      const { token } = response.data;
+      setToken(token);
+
+      history.push("/dashboard");
+    }
+
+    setLoading(false)
   };
 
   return (
-    <div className={`sign-in-card`}>
-      <img src={MainLogo} className="logo" />
+    <div className="sign-up-card">
+      <img src={MainLogo} className="logo" alt="logo" />
       <p className="logo-name">Coinster</p>
       <div className="sign-up-form">
         <TextField
@@ -59,7 +93,7 @@ const SignInCard = () => {
         or
         <Link to="/sign-up">
           <Button variant="text" color="primary">
-            Sign up
+            Sign Up
           </Button>
         </Link>
       </div>
