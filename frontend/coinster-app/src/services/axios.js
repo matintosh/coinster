@@ -24,13 +24,13 @@ const axiosCall = async (url, { query, ...requestOptions }) => {
       await logout();
     }
 
-    if (error.response) {
+    if (error?.response) {
       console.error(error.response.data.error);
-      return error.response.data;
-    } else if (error.request) {
+      return error?.response.data;
+    } else if (error?.request) {
       console.error(error.request);
     } else {
-      console.error(error.message);
+      console.error(error?.message);
     }
   }
 };

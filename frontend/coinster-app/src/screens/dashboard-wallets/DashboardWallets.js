@@ -4,18 +4,18 @@ import { CoinsterContext } from "../../context";
 import { getWalletsService } from "../../services/walletService";
 
 const DashboardWallets = () => {
-  const { setLoading } = useContext(CoinsterContext);
-
-  const [wallets, setWallets] = useState([]);
-  const [currencyList, setCurrencyList] = useState([]);
+  const { setLoading, wallets, setWallets, currencyList, setCurrencyList } = useContext(CoinsterContext);
 
   const getWallets = async () => {
-    setLoading(true);
+    if(!currencyList.length)
+        setLoading(true);
+
     const response = await getWalletsService();
 
-    if (response.error) return;
+    if (!response) return setLoading(false)
+    if (response?.error) return;
+
     else {
-      console.log(response);
       setWallets(response.data.wallets);
       setCurrencyList(response.data.currency_data.currency_list);
     }
@@ -24,7 +24,6 @@ const DashboardWallets = () => {
 
   const getCurrency = (id) => {
     const currency = currencyList.find((c) => c.id === id);
-    console.log(currency);
     return currency?.name ?? "Unavailable"
   };
 
