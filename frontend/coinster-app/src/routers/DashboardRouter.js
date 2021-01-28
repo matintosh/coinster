@@ -4,6 +4,7 @@ import {
   DashboardHome,
   DashboardTransferences,
   DashboardWallets,
+  Settings,
 } from "../screens";
 import PrivateRoute from "./PrivateRoutes";
 
@@ -15,6 +16,9 @@ export default function DashboardRouter() {
       </PrivateRoute>
       <PrivateRoute path="/dashboard/transferences">
         <DashboardTransferences />
+      </PrivateRoute>
+      <PrivateRoute path="/dashboard/settings">
+        <Settings />
       </PrivateRoute>
       <PrivateRoute path="/dashboard">
         <DashboardHome />

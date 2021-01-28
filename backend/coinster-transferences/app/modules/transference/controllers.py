@@ -27,13 +27,30 @@ def create(current_user):
     currency           = body['currency_id']
     amount             = body['amount']
     
-    # wallet_from_exists = validate_if_wallet_exists(wallet_from)
-    # wallet_to_exixts = validate_if_wallet_exists(wallet_to)
+    wallet_from_exists = validate_if_wallet_exists(wallet_from)
+    wallet_to_exists = validate_if_wallet_exists(wallet_to)
     
-    # if not wallet_from_exists:
-    #     return MissingValue("wallet_from id was not found.")
-    # if not wallet_to_exixts:
-    #     return MissingValue("wallet_to id was not found.")
+    
+    print("WALLETS DATA")
+    print(wallet_to_exists)
+    print(wallet_from_exists)
+    
+    
+    if 'error' in wallet_from_exists:
+        return MissingValue("wallet from id was not found.")
+    if 'error' in wallet_to_exists:
+        return MissingValue("wallet to id was not found.")
+    
+    
+    print(wallet_from_exists)
+    
+    if wallet_from_exists['wallet']['currency'] != wallet_to_exists['wallet']['currency']:
+        return BadRequest("Wallets should have the same currency")
+
+    
+    if wallet_from_exists['wallet']['balance'] < int(amount):
+        return BadRequest("Not enough money in the wallet")
+        
 
     
     transference = Transference(wallet_from=wallet_from, wallet_to=wallet_to, currency=currency, amount=amount)

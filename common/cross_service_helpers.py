@@ -10,18 +10,16 @@ def validate_if_user_exists(user_id):
 
 
 def validate_if_wallet_exists(wallet_id):
-    
-    req             = requests.get('http://coinster-wallets:5000/api/v1/wallet/%r' % wallet_id)  
+    url             = 'http://coinster-wallets:5000/api/v1/wallet/' + wallet_id
+    req             = requests.get(url)  
     wallet_data     = req.json()
 
-    return "error" not in wallet_data
+    return wallet_data
 
 
 def get_user_wallets(user_id):
-    print("EL USER ID")
-    print(user_id)
+
     url = 'http://coinster-wallets:5000/api/v1/wallet/user/' + user_id
-    print(url)
     req             = requests.get(url)  
     wallets_data    = req.json()
 

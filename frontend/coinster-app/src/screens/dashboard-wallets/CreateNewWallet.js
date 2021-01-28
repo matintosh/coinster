@@ -9,8 +9,12 @@ import {
   Select,
   TextField,
 } from "@material-ui/core";
+import { useSnackbar } from "notistack";
+
 
 const CreateNewWallet = ({ updateData, goToList }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const { currencyList, setLoading } = useContext(CoinsterContext);
   const [selectedCurrency, setSelectedCurrency] = useState(null);
   const [selectedBalance, setSelectedBalance] = useState("");
@@ -20,6 +24,9 @@ const CreateNewWallet = ({ updateData, goToList }) => {
   };
 
   const handleCreate = async () => {
+
+    if(!selectedCurrency) return enqueueSnackbar('Currency needs to be selected', {variant: 'error'})
+    if(selectedBalance.length < 1 || isNaN(selectedBalance)) return enqueueSnackbar('Please select a correct amount', {variant: 'error'})
     setLoading(true);
     const response = await newWalletService(
       selectedCurrency,

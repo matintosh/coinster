@@ -56,7 +56,9 @@ const DashboardTransferences = ({ history }) => {
         incoming = incoming.map( t => ({...t, type: 'in'}))
         outgoing = outgoing.map( t => ({...t, type: 'out'}))
 
-      setTransferences([...incoming, ...outgoing]);
+        const transferenceList = [...incoming, ...outgoing].filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+
+      setTransferences(transferenceList);
     }
   };
   const goToList = () => history.push("/dashboard/transferences");
@@ -65,6 +67,11 @@ const DashboardTransferences = ({ history }) => {
     getWallets();
     getTransferences();
   }, []);
+
+  const getCurrency = (id) => {
+    const currency = currencyList.find((c) => c.id === id);
+    return currency?.name ?? "Unavailable";
+  };
 
   const isCreatingNewTransference =
     window.location.pathname === "/dashboard/transferences/new";
@@ -90,7 +97,7 @@ const DashboardTransferences = ({ history }) => {
 
       <Switch>
         <PrivateRoute path="/dashboard/transferences/new">
-          <CreateNewTransference wallets={wallets} goToList={goToList} />
+          <CreateNewTransference wallets={wallets} goToList={goToList} getCurrency={getCurrency} getTransferences={getTransferences}/>
         </PrivateRoute>
         <PrivateRoute path="/dashboard/transferences">
           <div className="transferences-list">

@@ -58,7 +58,7 @@ def list_user_wallets(user_id):
 @mod_wallet.route('/<wallet_id>', methods=['GET'])
 def wallet_exists(wallet_id):
 
-    wallet = Wallet.query.filter_by(id=wallet_id).first()
+    wallet = Wallet.query.filter_by(public_id=wallet_id).first()
 
     if wallet:
         return SuccessResponse({'wallet': wallet})

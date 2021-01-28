@@ -1,18 +1,25 @@
-import React from "react";
-import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
+import { Tooltip } from "@material-ui/core";
+import React, { useState } from "react";
 
-const Wallet = ({ currency, balance, id, onDelete }) => {
+const Wallet = ({ currency, balance, id }) => {
+  const [copy, setCopy] = useState();
   return (
     <div className="wallet">
       <div className="wallet-currency-info">
         <p className="currency"> {currency} </p>
         <p className="balance"> ${balance} </p>
       </div>
-      <p>{id}</p>
-      <DeleteForeverOutlinedIcon
-        className="wallet-icon"
-        onClick={() => onDelete(id)}
-      />
+      <Tooltip title={!copy ? `Click to copy ${id}` : "Copied!"}>
+        <p
+          className="wallet-id"
+          onClick={() => {
+            navigator?.clipboard?.writeText(id);
+            setCopy(true);
+          }}
+        >
+          {id}
+        </p>
+      </Tooltip>
     </div>
   );
 };

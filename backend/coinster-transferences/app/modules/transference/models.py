@@ -21,7 +21,6 @@ class Transference(Base):
     currency:     int
     amount:       int
     status:       str
-    date_created: datetime.datetime
     
     wallet_from  = db.Column(db.String(50), nullable=False)
     wallet_to    = db.Column(db.String(50), nullable=False)   

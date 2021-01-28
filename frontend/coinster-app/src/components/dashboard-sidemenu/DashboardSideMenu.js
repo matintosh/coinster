@@ -41,7 +41,7 @@ const DashboardSideMenu = ({ history }) => {
 
         <Button
           className={`navigation-button ${
-            path === "/dashboard/transferences" ? "selected" : ""
+            path.includes("/dashboard/transference")  ? "selected" : ""
           }`}
           onClick={() => handleNavigate("/dashboard/transferences")}
         >
@@ -61,8 +61,10 @@ const DashboardSideMenu = ({ history }) => {
 
         <Button
           className={`navigation-button ${
-            path === "/dashboard/settings" ? "selected" : ""
+            path.includes("/dashboard/settings")  ? "selected" : ""
           }`}
+          onClick={() => handleNavigate("/dashboard/settings")}
+
         >
           <SettingsOutlinedIcon className="button-icon" />
           Settings

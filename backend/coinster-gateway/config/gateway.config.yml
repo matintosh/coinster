@@ -18,13 +18,13 @@ apiEndpoints:
     paths: ['/api/v1/transference','/api/v1/transference/*']
 serviceEndpoints:
   userService:
-    url: 'http://104.131.25.80:5001'
+    url: 'http://coinster-users:5000'
   currencyService:
-    url: 'http://104.131.25.80:5000'
+    url: 'http://coinster-currency:5000'
   walletsService:
-    url: 'http://104.131.25.80:5002'
+    url: 'http://coinster-wallets:5000'
   transferencesService:
-    url: 'http://104.131.25.80:5003'
+    url: 'http://coinster-transferences:5000'
 policies:
   - proxy
 pipelines:

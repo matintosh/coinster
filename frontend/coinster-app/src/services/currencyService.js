@@ -1,0 +1,19 @@
+import { authAxiosCall } from "./axios";
+
+export const getCurrenciesService = async () => {
+  return authAxiosCall("/api/v1/currency", {
+    method: "GET",
+  });
+};
+
+export const newCurrency = async (
+    name
+  ) => {
+    return authAxiosCall("/api/v1/currency", {
+      method: "POST",
+      body: JSON.stringify({
+        name
+      }),
+    });
+  };
+  

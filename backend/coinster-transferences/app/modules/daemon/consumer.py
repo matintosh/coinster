@@ -10,7 +10,10 @@ channel = connection.channel()
 channel.queue_declare(queue='transference')
 
 def callback(ch, method, properties, body):
-    print(json.loads(body))
+    data = json.loads(body)
+    transference_id = data['transference_id']
+    status = data['status']
+    update_transaction_status(transference_id, status)
     
 
 channel.basic_consume(queue='transference', on_message_callback=callback, auto_ack=True)
