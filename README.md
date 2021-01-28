@@ -34,3 +34,5 @@ There are 4 main services that take care of all the bussines logic and serving t
     - This is the service that gets the transactions requests, this first creates the 'in progress' or 'pending of aproval' transference record in the databae, and then after the wallet worker makes the money moves, it updates the status to 'aproved' or 'rejected' depending of the case
     - Transference service algo has a worker that takes care of listen the transferences being completed by the other worker
     - I was aiming to add a new worker listening the trnasferences updates in order to generate some sort of notifications but that will remain as a #TODO for some day in the future
+- gateway
+    - This is a gateway where you can centralice all requests and then "working as a proxy" send them to the requested service
