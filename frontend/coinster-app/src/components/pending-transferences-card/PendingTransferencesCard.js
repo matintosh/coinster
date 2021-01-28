@@ -4,15 +4,7 @@ import { getTransferencesService } from "../../services/transferenceService";
 import Transference from "./Transference";
 
 const PendingTransferencesCard = () => {
-  const {
-    setLoading,
-    setWallets,
-    wallets,
-    currencyList,
-    setCurrencyList,
-    transferences,
-    setTransferences,
-  } = useContext(CoinsterContext);
+  const { transferences, setTransferences } = useContext(CoinsterContext);
 
   const getTransferences = async () => {
     const response = await getTransferencesService();
@@ -34,6 +26,7 @@ const PendingTransferencesCard = () => {
   };
   useEffect(() => {
     getTransferences();
+    // eslint-disable-next-line
   }, []);
   return (
     <div className="pending-transferences-card">
