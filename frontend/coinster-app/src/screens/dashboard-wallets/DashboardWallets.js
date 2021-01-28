@@ -1,18 +1,8 @@
-import {
-  Button,
-  Fab,
-  FormControl,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@material-ui/core";
-import React, { useContext, useEffect, useState } from "react";
+import { Fab } from "@material-ui/core";
+import React, { useContext, useEffect } from "react";
 import { Wallet } from "../../components";
 import { CoinsterContext } from "../../context";
 import {
-  deleteWalletService,
   getWalletsService,
 } from "../../services/walletService";
 import AddIcon from "@material-ui/icons/Add";
@@ -41,13 +31,6 @@ const DashboardWallets = ({ history }) => {
       setWallets(response.data.wallets);
       setCurrencyList(response.data.currency_data.currency_list);
     }
-    setLoading(false);
-  };
-
-  const deleteWallet = async (walletId) => {
-    setLoading(true);
-    const response = await deleteWalletService(walletId);
-    await getWallets();
     setLoading(false);
   };
 
@@ -94,7 +77,6 @@ const DashboardWallets = ({ history }) => {
                 currency={getCurrency(w.currency)}
                 balance={w.balance}
                 id={w.public_id}
-                onDelete={deleteWallet}
               />
             ))}
           </div>
