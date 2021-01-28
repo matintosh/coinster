@@ -3,10 +3,11 @@
 # Getting started
 
 Run backend:
-`docker-compose up --build`
+`docker-compose up -d --build`
 
 Run frontend:
 - `cd frontend/coisnter-app`
+- `cp env.dist .env`
 - `npm i`
 - `npm start`
 
