@@ -13,7 +13,8 @@ def callback(ch, method, properties, body):
 
     body = json.loads(body)
     
-    validate_transference(body)
+    if properties.content_type == 'new_transference':
+        validate_transference(body)
     
 
 channel.basic_consume(queue='wallet', on_message_callback=callback, auto_ack=True)

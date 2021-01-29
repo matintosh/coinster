@@ -1,4 +1,4 @@
-import { authAxiosCall } from "./axios";
+import { authAxiosCall, unAuthAxiosCall } from "./axios";
 
 export const getCurrenciesService = async () => {
   return authAxiosCall("/api/v1/currency", {
@@ -14,6 +14,13 @@ export const newCurrency = async (
       body: JSON.stringify({
         name
       }),
+    });
+  };
+  
+
+  export const currencyUsageService = async () => {
+    return unAuthAxiosCall("/api/v1/currency/usage", {
+      method: "GET",
     });
   };
   

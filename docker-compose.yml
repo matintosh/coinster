@@ -40,6 +40,9 @@ services:
     networks:
       - coinster-network
 
+    environment:
+    - PYTHONUNBUFFERED=1
+
   coinster-users:
 
     build:

@@ -32,3 +32,11 @@ def get_currencies():
 
     return currency_data
 
+
+def get_transferences_by_currency(currency):
+    
+    req                     = requests.get('http://coinster-transferences:5000/api/v1/transference/currency/' + str(currency))  
+    transferences_data      = req.json()
+
+    return transferences_data
+

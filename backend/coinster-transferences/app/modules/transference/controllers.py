@@ -80,3 +80,24 @@ def get_user_transferences(current_user):
         return SuccessResponse({'outgoing_transferences': outgoing_transferences, 'incoming_transferences': incoming_transferences})
     
     
+
+
+@mod_transference.route('/currency/<currency_id>', methods=['GET'])
+def transferences_by_currency(currency_id):
+    currency = int(currency_id)
+    
+    print("LOOKING FOR CURRENCY", currency)
+    
+    transferences = Transference.query.filter_by(currency=currency).all()
+    
+    transferences_data = []
+    
+    for transference in transferences:
+        transference_dict = {
+            "currency": transference.currency,
+            "created_at": transference.date_created
+        }
+        transferences_data.append(transference_dict)
+    
+    return SuccessResponse({"transferences": transferences_data})
+    
