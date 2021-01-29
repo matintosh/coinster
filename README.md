@@ -16,7 +16,7 @@ Run frontend:
 # known issues
 The project uses a postgress database hosted in heroku, so every a couple of minutes it gets sleep, so probably when you start using the app you will get some CORS errors. They'll leave after one or two tries. An advice: try to navigate throught al the sections once you are logged in
 
-Another issue relates to a service is that the project also uses a third party rabbitmq host, the thing here is that sometimes some workers stay listening and literally taking a place in the "workers list". The visible error here is e.g. you create a new transaction but the daemon that takes care of validate and "make" it, never reach that "new_transference" call, so if you have a couple of open workers you are going to see that maybe one every 2 or 3 transferences will be getting proceessed.
+Another issue relates to a service is that the project also uses a third party rabbitmq host, the thing here is that sometimes some workers stay listening and literally taking a place in the "workers list". The visible error here is e.g. you create a new transaction but the daemon that takes care of validate and "make" it, never reach that "new_transference" call, so if you have a couple of open workers you are going to see that maybe one every 2 or 3 transferences will be getting proceessed. ( UPDATE: Probably adding some sort of heartbeat could help with this )
 
 
 
